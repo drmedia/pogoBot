@@ -1,4 +1,4 @@
-# 포켓몬고 기능 추가
+# 포켓몬고봇 기능 추가
 포켓몬고 도곡대치방에 하입님이 만드신 포켓몬고봇을 가져와 수정 했습니다.<br>
 https://github.com/joonluvschipotle/pogoBot
 
