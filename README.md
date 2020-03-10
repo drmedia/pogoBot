@@ -1,6 +1,6 @@
 # 포켓몬고 기능 추가
 포켓몬고 도곡대치방에 하입님이 만드신 포켓몬고봇을 가져와 수정 했습니다.<br>
-https://github.com/drmedia/pogoBot
+https://github.com/joonluvschipotle/pogoBot
 
 <br>1.	포켓몬고 날씨 예보 기능
 <br>2.	레이드 시간 45분, 1시간 변경 가능하도록 수정
