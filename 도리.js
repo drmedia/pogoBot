@@ -15,6 +15,7 @@ var currentTime = new Date(); var currentHour = currentTime.getHours(); var curr
 
 var roomNameForPrint = '강서';
 var raidheaderline =  '5성레이드 제보';
+var researchTaskHeader =  '리서치 목록';
 var useDustData = true; // 미세먼지 정보 사용여부
 var useWeathetInfo = true; // 날씨 정보 사용여부
 var usePogoWeathetInfo = true; // 포고날씨 정보 사용여부
@@ -2254,14 +2255,16 @@ function researchReturn (dbName, newReport){
                     true; // 고오스처럼 리서치 두개 (그레이트 3회, 스탑방문 2회) 있는거 있을때 이거 해제
                 } else {*/
                 researchBreakDown.splice(i+1,0,researchToPut);
-                currentReport = "?리서치 목록 [" + researchMonth + '/' + researchDate + ']';
+                //currentReport = "?리서치 목록 [" + researchMonth + '/' + researchDate + ']';
+                currentReport = researchTaskHeader + " [" + researchMonth + '/' + researchDate + ']';
                 break;
                 //}
             }
         }
     } else {
         researchBreakDown = researchBreakDown.concat(['[' + researchTitle.trim() + '] ' + researchMission,researchToPut]);
-        currentReport = "?리서치 목록 [" + researchMonth + '/' + researchDate + ']';
+        //currentReport = "?리서치 목록 [" + researchMonth + '/' + researchDate + ']';
+        currentReport = researchTaskHeader + " [" + researchMonth + '/' + researchDate + ']';
     }
     // 리서치 끼워넣기
     for (var i = 1; i < researchBreakDown.length; i++){
@@ -2472,6 +2475,7 @@ Utils.getResearchData = function() {
 
     var listToComplete = '리서치 목록\n[실프로드 실시간 기준]';
     var listToUpdate = '';
+     
 
     for (var i = 0; i < 1000; i++){
         listToComplete = listToComplete + '\u200b';
@@ -2485,7 +2489,10 @@ Utils.getResearchData = function() {
 
     // return listToComplete;
 
-
+    // researchTaskLang 데이타를 반환
+    var researchTaskLang = getResearchTaskLang();
+    var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
+    var formList = DoriDB.readData('dict_forms').split('\n'); 
 
     for (var i = 1; i < divideResearch.length; i++){
 
@@ -2509,7 +2516,15 @@ Utils.getResearchData = function() {
             //<p class=
             
             for (var j = 1; j < taskAndPokemonList.length; j++){
-                var getTaskName = taskAndPokemonList[j].split('<br><span')[0];
+                var taskNameEn = taskAndPokemonList[j].split('<br><span')[0].replace("é", "e").replace(".", "");
+                //var getTaskName = taskAndPokemonList[j].split('<br><span')[0];
+                
+                // 영어를 한국어로 반환
+                var getTaskName = researchTaskLang[taskNameEn];
+                if(typeof getTaskName === 'undefined')
+                {
+                    getTaskName = taskNameEn;
+                }
 
                 if (taskAndPokemonList[j].includes('task-reward pokemon')){
                     var getRewardNameList = taskAndPokemonList[j].split('96x96/');
@@ -2518,10 +2533,10 @@ Utils.getResearchData = function() {
                         var initialReward = getRewardNameList[k].split('.png')[0];
                         
 
-
-                        var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
-                        var formList = DoriDB.readData('dict_forms').split('\n');
-                        if(Number.isInteger(parseInt(initialReward))){
+                        // 한번만 데이타를 불려오도록 DoriDB.readData 밖으로 이동 시킴
+                        // var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
+                        // var formList = DoriDB.readData('dict_forms').split('\n');
+                        if(Number.isInteger(parseInt(initialReward, 10))){
                             initialReward = pokemonList[parseInt(initialReward,10)].split(',')[1];
                         } else {
                             //initialReward = formList;
@@ -2548,6 +2563,17 @@ Utils.getResearchData = function() {
 
     //return papagoNMT('en','ko',listToComplete);
     //return papagoNMT('ko','en','이게 왜 안되지? 왜 안녕밖에 안하지?');
+}
+
+function getResearchTaskLang()
+{
+    var jsonText = DoriDB.readData("researchtasklang");
+    var data = JSON.parse(jsonText); 
+    var researchTaskLang = {};
+    for (var i = 0; i < data.length; i++) {
+        researchTaskLang[data[i].TaskNameEn] = data[i].TaskName;
+    }  
+    return researchTaskLang;
 }
 
 //_____ 위치 찾는 함수

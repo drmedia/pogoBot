@@ -1,0 +1,194 @@
+[
+	{
+		"TaskName": "Nice로 5회 던진다",
+		"TaskNameEn": "Make 5 Nice Throws"
+	},
+	{
+		"TaskName": "Great로 3회 던진다",
+		"TaskNameEn": "Make 3 Great Throws"
+	},
+	{
+		"TaskName": "커브볼로 Great가 나오게 5회 연속으로 던진다",
+		"TaskNameEn": "Make 5 Great Curveball Throws in a row"
+	},
+	{
+		"TaskName": "Greate를 3회 연속 던진다",
+		"TaskNameEn": "Make 3 Great Throws in a row"
+	},
+	{
+		"TaskName": "커브볼로 Great가 나오게 3회 던진다",
+		"TaskNameEn": "Make 3 Great Curveball Throws"
+	},
+	{
+		"TaskName": "커브볼로 Greate가 나오게 3회 연속으로 던진다",
+		"TaskNameEn": "Make 3 Great Curveball Throws in a row"
+	},
+	{
+		"TaskName": "Excellent로 1회 던진다",
+		"TaskNameEn": "Make an Excellent Throw"
+	},
+	{
+		"TaskName": "커브볼를 5회 연속으로 던진다",
+		"TaskNameEn": "Make 5 Curveball Throws in a row"
+	},
+	{
+		"TaskName": "Excellent를 3회 연속 던진다",
+		"TaskNameEn": "Make 3 Excellent Throws in a row"
+	},
+	{
+		"TaskName": "커브볼로 Nice가 나오게 2회 연속으로 던진다",
+		"TaskNameEn": "Make 2 Nice Curveball Throws in a row"
+	},
+	{
+		"TaskName": "Nice를 3회 연속 던진다",
+		"TaskNameEn": "Make 3 Nice Throws in a row"
+	},
+	{
+		"TaskName": "체육관 배틀을 한다",
+		"TaskNameEn": "Battle in a Gym"
+	},
+	{
+		"TaskName": "체육관 배틀을 5회 한다",
+		"TaskNameEn": "Battle in a Gym 5 times"
+	},
+	{
+		"TaskName": "체육관 배틀에서 1회 이긴다",
+		"TaskNameEn": "Win a Gym battle"
+	},
+	{
+		"TaskName": "체육관 배틀에서 3회 이긴다",
+		"TaskNameEn": "Win 3 Gym battles"
+	},
+	{
+		"TaskName": "체육관 배틀에서 5회 이긴다",
+		"TaskNameEn": "Battle in a Gym 5 times"
+	},
+	{
+		"TaskName": "효과가 굉장한 스페셜 어택을 사용해서 체육관 배틀한다",
+		"TaskNameEn": "Use a supereffective Charged Attack in a Gym battle"
+	},
+	{
+		"TaskName": "효과가 굉장한 스페셜 어택을 사용해서 체육관 배틀을 7회 한다",
+		"TaskNameEn": "Use a supereffective Charged Attack in 7 Gym battles"
+	},
+	{
+		"TaskName": "레이드 배틀을 1회 한다",
+		"TaskNameEn": "Battle in a raid"
+	},
+	{
+		"TaskName": "레이드 배틀에서 1회 이긴다",
+		"TaskNameEn": "Win a raid"
+	},
+	{
+		"TaskName": "레이드 배틀에서 3회 이긴다",
+		"TaskNameEn": "Win 3 raids"
+	},
+	{
+		"TaskName": "레이드 배틀에서 5회 이긴다",
+		"TaskNameEn": "Win 5 raids"
+	},
+	{
+		"TaskName": "레벨 3 이상의 레이드에 1회 이긴다",
+		"TaskNameEn": "Win a level 3 or higher raid"
+	},
+	{
+		"TaskName": "GO 로켓단 조무래기와 배틀에서 3회 이긴다",
+		"TaskNameEn": "Defeat 3 Team GO Rocket Grunts"
+	},
+	{
+		"TaskName": "알을 부화한다",
+		"TaskNameEn": "Hatch an Egg"
+	},
+	{
+		"TaskName": "알을 3개 부화한다",
+		"TaskNameEn": "Hatch 3 Eggs"
+	},
+	{
+		"TaskName": "알을 5개 부화한다",
+		"TaskNameEn": "Hatch 5 Eggs"
+	},
+	{
+		"TaskName": "알을 7개 부화한다",
+		"TaskNameEn": "Hatch 7 Eggs"
+	},
+	{
+		"TaskName": "포켓몬 10마리를 잡는다",
+		"TaskNameEn": "Catch 10 Pokemon"
+	},
+	{
+		"TaskName": "불꽃 타입 포켓몬을 5마리 잡는다",
+		"TaskNameEn": "Catch 5 Fire-type Pokemon"
+	},
+	{
+		"TaskName": "풀, 불꽃, 땅 타입 중 한 가지 타입의 포켓몬을 3마리 잡는다",
+		"TaskNameEn": "Catch 3 Grass- Fire- or Ground-type Pokemon"
+	},
+	{
+		"TaskName": "날씨 부스트를 받고 있는 포켓몬 5마리 잡는다",
+		"TaskNameEn": "Catch 5 Pokemon with Weather Boost"
+	},
+	{
+		"TaskName": "드래곤 타입 포켓몬을 1마리 잡는다",
+		"TaskNameEn": "Catch a Dragon-type Pokemon"
+	},
+	{
+		"TaskName": "풀 타입 포켓몬을 7종류 잡는다",
+		"TaskNameEn": "Catch 7 different species of Grass-type Pokemon"
+	},
+	{
+		"TaskName": "메타몽을 1마리 잡는다",
+		"TaskNameEn": "Catch a Ditto"
+	},
+	{
+		"TaskName": "날씨 부스트를 받고 있는 포켓몬 10마리 잡는다",
+		"TaskNameEn": "Catch 10 Pokemon with Weather Boost"
+	},
+	{
+		"TaskName": "나무열매 5개를 사용하여 포켓몬을 잡는다",
+		"TaskNameEn": "Use 5 Berries to help catch Pokemon"
+	},
+	{
+		"TaskName": "노말타입 포켓몬을 10마리 잡는다",
+		"TaskNameEn": "Catch 10 Normal-type Pokemon"
+	},
+	{
+		"TaskName": "파트너의 사진을 찍기",
+		"TaskNameEn": "Take a snapshot of your buddy"
+	},
+	{
+		"TaskName": "파트너 하트를 5개 얻는다",
+		"TaskNameEn": "Earn 5 hearts with your buddy"
+	},
+	{
+		"TaskName": "선물 10개를 보낸다",
+		"TaskNameEn": "Send 10 Gifts to friends"
+	},
+	{
+		"TaskName": "포켓몬을 1마리 진화시킨다",
+		"TaskNameEn": "Evolve a Pokemon"
+	},
+	{
+		"TaskName": "포켓몬을 교환한다",
+		"TaskNameEn": "Trade a Pokemon"
+	},
+	{
+		"TaskName": "포켓몬을 3마리 보낸다",
+		"TaskNameEn": "Transfer 3 Pokemon"
+	},
+	{
+		"TaskName": "포켓몬을 5회 강화한다",
+		"TaskNameEn": "Power up Pokemon 5 times"
+	},
+	{
+		"TaskName": "포켓스탑 또는 체육관을 10회 방문한다",
+		"TaskNameEn": "Spin 10 PokeStops or Gyms"
+	},
+	{
+		"TaskName": "스폰서:포켓몬 8마리 잡는다.",
+		"TaskNameEn": "Sponsored: Catch 8 Pokemon"
+	},
+	{
+		"TaskName": "스폰서:친구에게 선물을 3개 보낸다",
+		"TaskNameEn": "Sponsored: Send 3 Gifts to friends"
+	}
+]
