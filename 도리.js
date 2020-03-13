@@ -14,7 +14,7 @@ const raidMinute = 45;
 var currentTime = new Date(); var currentHour = currentTime.getHours(); var currentMinute = currentTime.getMinutes(); var todayDate = (currentTime.getMonth()+1) + "월 " + currentTime.getDate() + "일";
 
 var roomNameForPrint = '강서';
-var raidheaderline =  '5성레이드 제보';
+var raidheaderline =  '볼트로스 레이드 제보 1911/2389';
 var researchTaskHeader =  '리서치 목록';
 var useDustData = true; // 미세먼지 정보 사용여부
 var useWeathetInfo = true; // 날씨 정보 사용여부
