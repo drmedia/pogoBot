@@ -13,6 +13,7 @@ const UniqueDB = {};
 const raidMinute = 45;
 var currentTime = new Date(); var currentHour = currentTime.getHours(); var currentMinute = currentTime.getMinutes(); var todayDate = (currentTime.getMonth()+1) + "월 " + currentTime.getDate() + "일";
 
+var isLocatTest = false;
 var roomNameForPrint = '강서';
 var raidheaderline =  '볼트로스 레이드 제보 1911/2389';
 var researchTaskHeader =  '리서치 목록';
@@ -75,7 +76,8 @@ var useResearchList = true // 리서치 사용 여부
 DoriDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드는 함수
     var folder = new java.io.File(sdcard + "/Dori/"); //File 인스턴스 생성
     folder.mkdirs(); //폴더 생성
-}; DoriDB.saveData = function(name, msg) { //파일에 내용을 저장하는 함수
+}; 
+DoriDB.saveData = function(name, msg) { //파일에 내용을 저장하는 함수
     try {
         var file = new java.io.File(sdcard + "/Dori/" + name + ".txt");
         var fos = new java.io.FileOutputStream(file);
@@ -85,7 +87,8 @@ DoriDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드
     } catch (e) {
         Log.debug(e + ", " + e.lineNumber);
     }
-}; DoriDB.readData = function(name) { //파일에 저장된 내용을 불러오는 함수
+}; 
+DoriDB.readData = function(name) { //파일에 저장된 내용을 불러오는 함수
     try {
         var file = new java.io.File(sdcard + "/Dori/" + name + ".txt");
         if (!file.exists()) return null;
@@ -109,7 +112,8 @@ DoriDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드
 UniqueDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드는 함수
     var folder = new java.io.File(sdcard + "/UniqueDB/"); //File 인스턴스 생성
     folder.mkdirs(); //폴더 생성
-}; UniqueDB.saveData = function(name, msg) { //파일에 내용을 저장하는 함수
+}; 
+UniqueDB.saveData = function(name, msg) { //파일에 내용을 저장하는 함수
     try {
         var file = new java.io.File(sdcard + "/UniqueDB/" + name + ".txt");
         var fos = new java.io.FileOutputStream(file);
@@ -119,7 +123,8 @@ UniqueDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만�
     } catch (e) {
         Log.debug(e + ", " + e.lineNumber);
     }
-}; UniqueDB.readData = function(name) { //파일에 저장된 내용을 불러오는 함수
+}; 
+UniqueDB.readData = function(name) { //파일에 저장된 내용을 불러오는 함수
     try {
         var file = new java.io.File(sdcard + "/UniqueDB/" + name + ".txt");
         if (!file.exists()) return null;
@@ -191,9 +196,10 @@ function getPogoWeathetInfo(pos)
 {
     try {
         var data = Utils.sendPost("https://pokeweather.azurewebsites.net/WeatherService/GetPogoWeatherForcastByLocationName?locationName=" + pos + "&random="+Math.random());  //검색 결과 파싱
+
         data = data.replace(/<[^>]+>/g,"");  //태그 삭제
         //return data;
-
+        
         var obj = JSON.parse(data);
 
         if(obj.length == 0) {
@@ -239,6 +245,40 @@ Utils.dustLevel2 = function(value) {
 };
 
 Utils.getRaidBossData = function() { //보스목록을 불러오자
+    try{
+        var data = Utils.sendPost("https://pokeweather.azurewebsites.net/SilphRoadService/RaidBosses");  //검색 결과 파싱
+          
+        data = data.replace(/<[^>]+>/g,"");  //태그 삭제
+        //return data;
+        
+        var obj = JSON.parse(data);
+
+        if(obj.length == 0) {
+            return ''
+        }
+        var bossList = '보스 목록';
+        bossList = bossList + '\n' + todayDate + ' 현재 실프로드 기준' + '\n\n' 
+
+        for (var i = 0; i< obj.length; i++){
+            var tier =  obj[i];
+            bossList = bossList + tier.Name + '\n'
+            var bosses = tier.RaidBosses
+            for(var x =0; x< bosses.length; x++)
+            {
+                var boss = bosses[x];
+                bossList = bossList +  boss.NameKo +  ((boss.IsShiny  == true) ? "(*)" : "") + " (" + boss.CpMax + " / " + boss.BoostedCpMax +')\n' ;
+            }
+            bossList = bossList + '\n'
+         }
+        
+        return bossList;
+
+    } catch(e) {
+        return "레이드 보스 불러오기 실패\n오류: " + e;
+    }
+}
+
+Utils.getRaidBossData_bak = function() { //보스목록을 불러오자
     try{
         var data = Utils.getWebText("https://thesilphroad.com/raid-bosses");  //검색 결과 파싱
         data = data.replace(/<[^>]+>/g,"");  //태그 삭제
@@ -302,7 +342,42 @@ Utils.getRaidBossData = function() { //보스목록을 불러오자
     }
 }
 
+
 Utils.getEggHatch = function() { //알 부화 정보를 불러오자
+    try{
+        var data = Utils.sendPost("https://pokeweather.azurewebsites.net/SilphRoadService/EggDistances");  //검색 결과 파싱
+          
+        data = data.replace(/<[^>]+>/g,"");  //태그 삭제
+        //return data;
+        
+        var obj = JSON.parse(data);
+
+        if(obj.length == 0) {
+            return ''
+        }
+
+        var hatchList = '알 부화 정보';
+        hatchList = hatchList + '\n' + todayDate + ' 현재 실프로드 기준' + '\n\n' 
+
+        for (var i = 0; i< obj.length; i++){
+           var distance =  obj[i];
+           hatchList = hatchList + distance.Remark + '\n'
+           var eggs = distance.EggDistances
+           for(var x =0; x< eggs.length; x++)
+           {
+               var egg = eggs[x];
+                hatchList = hatchList + "#" + egg.PokemonNo + " " + egg.NameKo +  ((egg.IsShiny  == true) ? "(*)" : "") + " 100CP:" + egg.Iv100 + '\n' ;
+           }
+           hatchList = hatchList + '\n'
+        }
+
+        return hatchList;
+     } catch(e) {
+        return "알 부화 리스트 불러오기 실패\n오류: " + e;
+    }
+}
+
+Utils.getEggHatch_bak = function() { //알 부화 정보를 불러오자
     try{
         var data = Utils.getWebText("https://thesilphroad.com/egg-distances");  //검색 결과 파싱
         data = data.replace(/<[^>]+>/g,"");  //태그 삭제
@@ -424,7 +499,6 @@ Utils.getTextFromWeb = function(url) {
 // Post로 전송한다(2019.09.03 이인철)
 Utils.sendPost = function(url) {
     try {
-        
         var result;
         var url = new java.net.URL(url);
         var con = url.openConnection();
@@ -443,6 +517,7 @@ Utils.sendPost = function(url) {
             br.close();
             con.disconnect();
             result = str;
+            Log.debug(str);
         }
         return result;
     } catch (e) {
@@ -2459,6 +2534,8 @@ Utils.getNestTestBack = function(isItSmall) {
     return listToComplete;
 }
 
+ 
+
 Utils.getResearchData = function() {
     var data = Utils.getTextFromWeb("https://thesilphroad.com/research-tasks");
     //data = data.replace(/<[^>]+>/g,"");  //태그 삭제
@@ -2516,13 +2593,12 @@ Utils.getResearchData = function() {
             //<p class=
             
             for (var j = 1; j < taskAndPokemonList.length; j++){
-                var taskNameEn = taskAndPokemonList[j].split('<br><span')[0].replace("é", "e").replace(".", "");
+                var taskNameEn = taskAndPokemonList[j].split('.<br><\/p')[0].replace("é", "e").replace(".", "");
                 //var getTaskName = taskAndPokemonList[j].split('<br><span')[0];
                 
                 // 영어를 한국어로 반환
                 var getTaskName = researchTaskLang[taskNameEn];
-                if(typeof getTaskName === 'undefined')
-                {
+                if(typeof getTaskName === 'undefined'){
                     getTaskName = taskNameEn;
                 }
 
@@ -2849,7 +2925,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     if (msg.includes('  ')){
         msg = msg.replace('    ',' '); msg = msg.replace('   ',' '); msg = msg.replace('  ',' ');
     }
-    
+
     if(useWordFollow){
       if (msg.includes('융') && (Math.floor(Math.random() * 6) != 1)){
         replier.reply('융!');
@@ -2926,11 +3002,16 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
     
 
     
-    msg = msg.trim();sender = sender.trim();room = room.trim();preChat[room] = msg;
-    procCmd(room, msg, sender, replier); //명령어
+    msg = msg.trim();sender = sender.trim();room = room.trim();
+    //preChat[room] = msg;
+    
+    if(!isLocatTest){
+        preChat[room] = msg;
+        procCmd(room, msg, sender, replier); //명령어
+        if (botOn[room] == undefined) {botOn[room] = true;} // 해당 채팅방의 on/off 여부가 결정되어있지 않으면 on으로 설정
+        if (botOn[room] == false) {return;} // 봇이 꺼져있으면 응답 안함
+    }
 
-    if (botOn[room] == undefined) {botOn[room] = true;} // 해당 채팅방의 on/off 여부가 결정되어있지 않으면 on으로 설정
-    if (botOn[room] == false) {return;} // 봇이 꺼져있으면 응답 안함
     
     var noReply = [".", "사진", "동영상", "음성메시지", "카카오톡 프로필", "(이모티콘)", "카카오링크 이미지"]; // 반응 안함
     for (var n = 0; n < noReply.length; n++) {if (msg == noReply[n]) return;}
@@ -3030,7 +3111,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             msg = msg.replace('#','');
             
             returnText = pokemonInfoReturn(msg);
-            if (returnText=="none"){msg = msg + " 정보"; returnText=="none";}
+            // 이부분에서 정보를 다시 붙어저 검색에서 에러가 발생함
+            //if (returnText=="none"){msg = msg + " 정보"; returnText=="none";}
           }
           if (msg.includes("아공이") && msg.includes("100")){
               returnText = keyToText(null,'pokemon100IVString');
@@ -3057,7 +3139,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
                 returnText = keyToText(null,'special_Spirittomb'); msg = '화강돌';
             } else if (msg.includes('멜탄')){
                 returnText = keyToText(null,'special_Meltan'); msg = '멜탄';
-            } else if (msg.includes('초보자') || msg.includes('이제라도 배우는')){
+            } else if (msg.includes('초보자') || msg.includes('이제라도 배우���')){
                 returnText = keyToText(null,'special_Newbie'); msg = '초보자';
             } else if (msg.includes('로켓단') || msg.includes('수상한 단체')){
                 returnText = keyToText(null,'special_Rocket'); msg = '로켓단';
@@ -3208,7 +3290,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             } 
         }
         
-        
+
         if (returnText == "none"){
             msg = msg.replace('정보','');
         } 
@@ -3380,7 +3462,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
               if (msg.length < 1){
                   msg = '강서구'
               }
-  
+              Log.debug(msg);
               replier.reply('pokeweather.azurewebsites 로부터 포고 날씨 예보를 받는 중입니다.');
   
               var getTodayDate = new Date();
