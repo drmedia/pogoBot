@@ -3484,7 +3484,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
               if (msg.length < 1){
                   msg = '강서'
               }
-              returnText = "날씨 및 미세먼지 정보 제공을 중단 합니다.";              
+              returnText = "날씨 및 미세먼지 정보 제공을 중단 합니다.";   
+              
+              
               //날씨 및 미세먼지 정보 중단 2020.04.29 유라솔
               //var getTodayDate = new Date();
               //returnText = "[" + (getTodayDate.getMonth()+1) + '월 ' + getTodayDate.getDate() + '일 ' + msg + " 날씨 정보]\n\n" + getWeathetInfo(msg) + '\n' + Utils.getDustData(msg) + "\n트레이너분들 건강하세요~!";
