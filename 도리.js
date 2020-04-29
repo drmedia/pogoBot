@@ -147,6 +147,7 @@ UniqueDB.readData = function(name) { //파일에 저장된 내용을 불러오�
 
 /*Utils 객체 확장*/
 Utils.getDustData = function(desiredLocation) { //전국 미세먼지 정보 가져오는 함수
+    return "미세먼지 정보 제공을 중단 합니다.";
     try {
         var data = Utils.getTextFromWeb("https://m.search.naver.com/search.naver?where=m&sm=mtb_etc&mra=blQ3&query=" + desiredLocation + "%20%EB%AF%B8%EC%84%B8%EB%A8%BC%EC%A7%80");        
         var dustData = data.split('<span class="text_top">미세먼지</span> <span class="number">')[1].split("</span>")[0];
@@ -161,6 +162,7 @@ Utils.getDustData = function(desiredLocation) { //전국 미세먼지 정보 가
 
 
 function getWeathetInfo(pos) {
+    return "날씨 정보 제공을 중단 합니다.";
     try{
         var data = Utils.getWebText("https://m.search.naver.com/search.naver?query=" + pos + "%20날씨");  //검색 결과 파싱
         data = data.replace(/<[^>]+>/g,"");  //태그 삭제
@@ -257,7 +259,7 @@ Utils.getRaidBossData = function() { //보스목록을 불러오자
             return ''
         }
         var bossList = '보스 목록';
-        bossList = bossList + '\n' + todayDate + ' 현재 실프로드 기준' + '\n\n' 
+        bossList = bossList + '\n' + getToday() + ' 현재 실프로드 기준' + '\n\n' 
 
         for (var i = 0; i< obj.length; i++){
             var tier =  obj[i];
@@ -357,7 +359,7 @@ Utils.getEggHatch = function() { //알 부화 정보를 불러오자
         }
 
         var hatchList = '알 부화 정보';
-        hatchList = hatchList + '\n' + todayDate + ' 현재 실프로드 기준' + '\n\n' 
+        hatchList = hatchList + '\n' + getToday() + ' 현재 실프로드 기준' + '\n\n' 
 
         for (var i = 0; i< obj.length; i++){
            var distance =  obj[i];
@@ -398,7 +400,7 @@ Utils.getEggHatch_bak = function() { //알 부화 정보를 불러오자
         for(var i = 0; i < 1000; i++){
             hatchList = hatchList + '\u200b';
         }
-        hatchList = hatchList + '\n' + todayDate + ' 현재 실프로드 기준'
+        hatchList = hatchList + '\n' + getToday() + ' 현재 실프로드 기준'
         var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
         var eggDistance = ['2KM','5KM','10KM','5KM (걷기 보상)','10KM (걷기 보상)', '7KM (친구 선물)'];
 
@@ -530,6 +532,12 @@ DoriDB.createDir(); //폴더 생성
 function timeRenew(){
     currentTime = new Date(); currentHour = currentTime.getHours(); currentMinute = currentTime.getMinutes();
 }//시간 갱신
+
+function getToday()
+{
+   var toDate = new Date();
+   return (toDate.getMonth()+1) + "월 " + toDate.getDate() + "일";
+}
 
 function hasNumber(myString) {
   return /\d/.test(myString);
@@ -3239,7 +3247,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
               returnText = keyToText(null,'sinnohstone');
             }
         } else if (msg.includes('알') && msg.includes('부화')){
-            if(useEggHatch){            {
+            if(useEggHatch){
               returnText =Utils.getEggHatch();
             }
         } else if(msg.includes('평가')){
@@ -3294,7 +3302,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         if (returnText == "none"){
             msg = msg.replace('정보','');
         } 
-    }    
+     
         
         //정보는 여기서 빠진다
         
@@ -3476,9 +3484,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
               if (msg.length < 1){
                   msg = '강서'
               }
-              
-              var getTodayDate = new Date();
-              returnText = "[" + (getTodayDate.getMonth()+1) + '월 ' + getTodayDate.getDate() + '일 ' + msg + " 날씨 정보]\n\n" + getWeathetInfo(msg) + '\n' + Utils.getDustData(msg) + "\n트레이너분들 건강하세요~!";
+              returnText = "날씨 및 미세먼지 정보 제공을 중단 합니다.";              
+              //날씨 및 미세먼지 정보 중단 2020.04.29 유라솔
+              //var getTodayDate = new Date();
+              //returnText = "[" + (getTodayDate.getMonth()+1) + '월 ' + getTodayDate.getDate() + '일 ' + msg + " 날씨 정보]\n\n" + getWeathetInfo(msg) + '\n' + Utils.getDustData(msg) + "\n트레이너분들 건강하세요~!";
             }       
         }
         
