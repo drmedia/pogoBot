@@ -1,5 +1,41 @@
 [
 	{
+		"TaskName": "포켓몬을 1회 강화한다",
+		"TaskNameEn": "Power up a Pokemon"
+	},
+	{
+		"TaskName": "파트너와 놀아주기",
+		"TaskNameEn": "Play with your buddy"
+	},
+	{
+		"TaskName": "파트너의 사진을 3번 찍는다",
+		"TaskNameEn": "Take 3 snapshots of your buddy"
+	},
+	{
+		"TaskName": "포켓몬을 7마리 잡는다",
+		"TaskNameEn": "Catch 7 Pokemon"
+	},
+	{
+		"TaskName": "포켓몬을 7마리 보낸다",
+		"TaskNameEn": "Transfer 7 Pokemon"
+	},
+	{
+		"TaskName": "트레이너와 배틀한다",
+		"TaskNameEn": "Battle another Trainer"
+	},
+	{
+		"TaskName": "파트너 사진을 1회 찍는다",
+		"TaskNameEn": "Take a snapshot of your buddy"
+	},
+	{
+		"TaskName": "파트너에게 3회 간식 주기",
+		"TaskNameEn": "Give your buddy 3 treats"
+	},
+	{
+		"TaskName": "독 타입 포켓몬을 3마리 잡는다",
+		"TaskNameEn": "Catch 3 Poison-type Pokemon"
+	},
+	{
 		"TaskName": "Nice로 5회 던진다",
 		"TaskNameEn": "Make 5 Nice Throws"
 	},
@@ -12,7 +48,7 @@
 		"TaskNameEn": "Make 5 Great Curveball Throws in a row"
 	},
 	{
-		"TaskName": "Greate를 3회 연속 던진다",
+		"TaskName": "Great를 3회 연속 던진다",
 		"TaskNameEn": "Make 3 Great Throws in a row"
 	},
 	{
@@ -96,6 +132,14 @@
 		"TaskNameEn": "Defeat 3 Team GO Rocket Grunts"
 	},
 	{
+		"TaskName": "트래이너와 배틀한다",
+		"TaskNameEn": "Battle another Trainer"
+	},
+	{
+		"TaskName": "GO배틀리그에서 1번 이긴다",
+		"TaskNameEn": "Win in the GO Battle League"
+	},
+	{
 		"TaskName": "알을 부화한다",
 		"TaskNameEn": "Hatch an Egg"
 	},
@@ -120,8 +164,12 @@
 		"TaskNameEn": "Catch 5 Fire-type Pokemon"
 	},
 	{
-		"TaskName": "풀, 불꽃, 땅 타입 중 한 가지 타입의 포켓몬을 3마리 잡는다",
+		"TaskName": "풀 불꽃 땅 타입 중 한 가지 타입의 포켓몬을 3마리 잡는다",
 		"TaskNameEn": "Catch 3 Grass- Fire- or Ground-type Pokemon"
+	},
+	{
+		"TaskName": "물 전기 발레 타입 중 한 가지 타입의 포켓몬을 3마리 잡는다",
+		"TaskNameEn": "Catch 3 Water- Electric- or Bug-type Pokemon"
 	},
 	{
 		"TaskName": "날씨 부스트를 받고 있는 포켓몬 5마리 잡는다",
@@ -152,12 +200,28 @@
 		"TaskNameEn": "Catch 10 Normal-type Pokemon"
 	},
 	{
+		"TaskName": "바위타입 포켓몬을 3마리 잡는다",
+		"TaskNameEn": "Catch 3 Rock-type Pokemon"
+	},
+	{
+		"TaskName": "전기타입 포켓몬을 3마리 잡는다",
+		"TaskNameEn": "Catch 3 Electric-type Pokemon"
+	},
+	{
+		"TaskName": "4종의 포켓몬을 잡는다",
+		"TaskNameEn": "Catch 4 different species of Pokemon"
+	},
+	{
 		"TaskName": "파트너의 사진을 찍기",
 		"TaskNameEn": "Take a snapshot of your buddy"
 	},
 	{
 		"TaskName": "파트너 하트를 5개 얻는다",
 		"TaskNameEn": "Earn 5 hearts with your buddy"
+	},
+	{
+		"TaskName": "파트너와 걸어서 사탕 3개 얻는다",
+		"TaskNameEn": "Earn 3 Candies walking with your buddy"
 	},
 	{
 		"TaskName": "선물 10개를 보낸다",
@@ -184,7 +248,19 @@
 		"TaskNameEn": "Spin 10 PokeStops or Gyms"
 	},
 	{
-		"TaskName": "스폰서:포켓몬 8마리 잡는다.",
+		"TaskName": "땅타입 포켓몬 사진을 1장 찍는다",
+		"TaskNameEn": "Take 1 snapshots of Grass-type Pokemon"
+	},
+	{
+		"TaskName": "선물을 3개 보낸다",
+		"TaskNameEn": "Send 3 Gifts to friends"
+	},
+	{
+		"TaskName": "전기타입 포켓몬 사진을 1장 찍는다",
+		"TaskNameEn": "Take a snapshot of an Electric-type Pokemon"
+	},
+	{
+		"TaskName": "스폰서:포켓몬 8마리 잡는다",
 		"TaskNameEn": "Sponsored: Catch 8 Pokemon"
 	},
 	{
