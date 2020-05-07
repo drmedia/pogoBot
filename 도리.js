@@ -70,6 +70,8 @@ var useRosterList = true // 출석부 팟 사용 여부
 var useRaidStatusList = true // 레이드 제보 사용 여부
 var useResearchList = true // 리서치 사용 여부
 
+
+
 /*DoriDB 객체*/
 DoriDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드는 함수
     var folder = new java.io.File(sdcard + "/Dori/"); //File 인스턴스 생성
