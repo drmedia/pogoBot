@@ -15,7 +15,7 @@ var currentTime = new Date(); var currentHour = currentTime.getHours(); var curr
 
 var isLocatTest = false;
 var roomNameForPrint = '강서';
-var raidheaderline =  '볼트로스 레이드 제보 1911/2389';
+var raidheaderline =  '기라티나 레이드 제보 1931/2414';
 var researchTaskHeader =  '리서치 목록';
 var useDustData = true; // 미세먼지 정보 사용여부
 var useWeathetInfo = true; // 날씨 정보 사용여부
@@ -2542,9 +2542,108 @@ Utils.getNestTestBack = function(isItSmall) {
     return listToComplete;
 }
 
- 
-
 Utils.getResearchData = function() {
+ 
+    var data = Utils.sendPost("https://pokeweather.azurewebsites.net/SilphRoadService/ResearchTasks");  //검색 결과 파싱
+    var researchGroups = JSON.parse(data); 
+    var listToComplete = '리서치 목록\n[실프로드 실시간 기준]';
+    var listToUpdate = '';
+
+    
+
+    // researchTaskLang 데이타를 반환
+    var researchTaskLang = getResearchTaskLang();
+    var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
+    var formList = DoriDB.readData('dict_forms').split('\n'); 
+
+    for (var i = 0; i < researchGroups.length; i++){
+
+        var firstOne = researchGroups[i];
+
+        var getCategory = firstOne.ResearchGroup;
+        if (getCategory.includes('Sponsored')){
+            continue;
+        }
+        
+        listToComplete = listToComplete + '\n\n' + getCategory;
+
+        
+        var updateList
+        var taskAndPokemonList = firstOne.ResearchTasks;
+
+        
+        if (taskAndPokemonList.length > 0){
+            //listToComplete = listToComplete + '\n\n\n\n\n' + taskAndPokemonList;
+            //<p class=
+            
+            for (var j = 0; j < taskAndPokemonList.length; j++){
+                var task = taskAndPokemonList[j];
+                var taskNameEn = task.TaskName.replace(".", "");
+                
+                if(task.IncludesPokemon == false)
+                    continue;
+                
+                // 영어를 한국어로 반환
+                var getTaskName = researchTaskLang[taskNameEn];
+                if(typeof getTaskName === 'undefined'){
+                    getTaskName = taskNameEn;
+                }
+
+                if (task.Items.length > 0){
+                    //var getRewardNameList = taskAndPokemonList[j].split('96x96/');
+                    var getRewardName = ':'
+                    for (var k = 0; k < task.Items.length; k++){
+                        
+                        var taskItem = task.Items[k];
+                        if(taskItem.ItemName !== "pokemon")
+                            continue;
+
+                        var initialReward = taskItem.ItemPokemonNo;
+                        
+
+                        // 한번만 데이타를 불려오도록 DoriDB.readData 밖으로 이동 시킴
+                        // var pokemonList = DoriDB.readData('pokemonInfo').split('\n');
+                        // var formList = DoriDB.readData('dict_forms').split('\n');
+                        if(Number.isInteger(parseInt(initialReward, 10))){
+                            initialReward = pokemonList[parseInt(initialReward,10)].split(',')[1];
+                        } else {
+                            //initialReward = formList;
+                            var itemPokemonName = taskItem.ItemValue + "";
+                            for (let index = 0; index < formList.length; index++) {
+                                var element = formList[index].trim();
+                                if(element == itemPokemonName)
+                                {
+                                    initialReward = formList[index-1];
+                                    break;
+                                    
+                                }
+                            }
+                            initialReward = initialReward + "";
+                        }
+
+                        getRewardName = getRewardName + ' ' + initialReward;
+
+                    }
+                    listToComplete = listToComplete + '\n' + getTaskName + getRewardName;
+                    listToUpdate = listToUpdate + getRewardName.replace(':','') + ',' + getTaskName + '\n';
+                } 
+
+                
+            }
+            
+        }     
+
+    }
+    listToUpdate = '알로, GO 로켓단 보스\n클리프, GO 로켓단 보스\n시에라, GO 로켓단 보스\n비주기, GO 로켓단 보스\n' + listToUpdate;
+
+    DoriDB.saveData('researchDivide',listToUpdate);
+    return listToComplete;
+
+    //return papagoNMT('en','ko',listToComplete);
+    //return papagoNMT('ko','en','이게 왜 안되지? 왜 안녕밖에 안하지?');
+} 
+
+Utils.getResearchData_bak = function() {
     var data = Utils.getTextFromWeb("https://thesilphroad.com/research-tasks");
     //data = data.replace(/<[^>]+>/g,"");  //태그 삭제
     data = data.replace(/[{"",}]/g,"");  //태그 삭제
@@ -2595,7 +2694,6 @@ Utils.getResearchData = function() {
         var taskAndPokemonList = firstOne.split('<\/h3')[1].split('taskText>');
 
         
-
         if (taskAndPokemonList.includes('pokemonOnly')){
             //listToComplete = listToComplete + '\n\n\n\n\n' + taskAndPokemonList;
             //<p class=
