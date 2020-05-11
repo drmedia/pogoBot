@@ -9,7 +9,7 @@ const sdcard = android.os.Environment.getExternalStorageDirectory().getAbsoluteP
 
 /*상수 (객체) 선언*/
 const DoriDB = {}; const preChat = {}; const lastSender = {}; const botOn = {}; const basicDB = "basic";
-const UniqueDB = {};
+const UniqueDB = {}; const DoriDBRemoteService = {};
 const raidMinute = 45;
 var currentTime = new Date(); var currentHour = currentTime.getHours(); var currentMinute = currentTime.getMinutes(); var todayDate = (currentTime.getMonth()+1) + "월 " + currentTime.getDate() + "일";
 
@@ -17,6 +17,8 @@ var isLocatTest = false;
 var roomNameForPrint = '강서';
 var raidheaderline =  '기라티나 레이드 제보 1931/2414';
 var researchTaskHeader =  '리서치 목록';
+var DoriDBRemoteData =  ["event", "community"];
+var useDoriDBRemote = true // DoriDBRemote 사용여부
 var useDustData = true; // 미세먼지 정보 사용여부
 var useWeathetInfo = true; // 날씨 정보 사용여부
 var usePogoWeathetInfo = true; // 포고날씨 정보 사용여부
@@ -107,6 +109,13 @@ DoriDB.readData = function(name) { //파일에 저장된 내용을 불러오는 
     } catch (e) {
         Log.debug(e + ", " + e.lineNumber);
     }
+};
+
+DoriDBRemoteService.readData = function(name) {
+ 
+        var urlInfo = "https://pokeweather.azurewebsites.net/DoriBotService/" + name ;
+        var result = Utils.sendPost(urlInfo);
+        return result;
 };
 
 UniqueDB.createDir = function() { //배운 채팅들이 저장될 폴더를 만드는 함수
@@ -554,7 +563,15 @@ function sayItToHype (from, thisMessage){
 function keyToText (textKey, dbName){
     var dbToUse = DoriDB.readData(dbName);
     if (textKey == null){
-        return DoriDB.readData(dbName);
+        if(useDoriDBRemote && DoriDBRemoteData.includes(dbName))
+        {
+            return DoriDBRemoteService.readData(dbName);
+        } 
+        else
+        {
+            return DoriDB.readData(dbName);
+        }
+        
     } else {
         var keyNumber;
         var divideCategory = dbToUse.split("\n"); //첫 줄 빼기용
@@ -2578,16 +2595,16 @@ Utils.getResearchData = function() {
             
             for (var j = 0; j < taskAndPokemonList.length; j++){
                 var task = taskAndPokemonList[j];
-                var taskNameEn = task.TaskName.replace(".", "");
+                var taskName = task.TaskName.replace(".", "");
                 
                 if(task.IncludesPokemon == false)
                     continue;
-                
+ 
                 // 영어를 한국어로 반환
-                var getTaskName = researchTaskLang[taskNameEn];
-                if(typeof getTaskName === 'undefined'){
-                    getTaskName = taskNameEn;
-                }
+                //var getTaskName = researchTaskLang[taskNameEn];
+                // if(typeof getTaskName === 'undefined'){
+                //     getTaskName = taskNameEn;
+                // }
 
                 if (task.Items.length > 0){
                     //var getRewardNameList = taskAndPokemonList[j].split('96x96/');
@@ -2624,8 +2641,8 @@ Utils.getResearchData = function() {
                         getRewardName = getRewardName + ' ' + initialReward;
 
                     }
-                    listToComplete = listToComplete + '\n' + getTaskName + getRewardName;
-                    listToUpdate = listToUpdate + getRewardName.replace(':','') + ',' + getTaskName + '\n';
+                    listToComplete = listToComplete + '\n' + taskName + getRewardName;
+                    listToUpdate = listToUpdate + getRewardName.replace(':','') + ',' + taskName + '\n';
                 } 
 
                 
