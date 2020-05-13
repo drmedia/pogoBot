@@ -13,6 +13,7 @@ const UniqueDB = {}; const DoriDBRemoteService = {};
 const raidMinute = 45;
 var currentTime = new Date(); var currentHour = currentTime.getHours(); var currentMinute = currentTime.getMinutes(); var todayDate = (currentTime.getMonth()+1) + "월 " + currentTime.getDate() + "일";
 
+
 var isLocatTest = false;
 var roomNameForPrint = '강서';
 var raidheaderline =  '비리디온 레이드 제보 1727/2159';
