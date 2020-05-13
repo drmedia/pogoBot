@@ -15,7 +15,7 @@ var currentTime = new Date(); var currentHour = currentTime.getHours(); var curr
 
 var isLocatTest = false;
 var roomNameForPrint = '강서';
-var raidheaderline =  '기라티나 레이드 제보 1931/2414';
+var raidheaderline =  '비리디온 레이드 제보 1727/2159';
 var researchTaskHeader =  '리서치 목록';
 var DoriDBRemoteData =  ["event", "community"];
 var useDoriDBRemote = true // DoriDBRemote 사용여부
@@ -1493,7 +1493,7 @@ function delPersonFromRoster (dbName, rosterMSG, replier){
     getOutFromRoster(dbName, sender1, rosterMSG[1], replier);
 }
 
-//출석부에서 빠지는 함수
+//출석부에서 빠지는 함���
 function getOutFromRoster (dbName, sender, rosterMSG, replier){
     // 작은분수 빠질게
     // 작은분수 빠지겠습니다
@@ -2600,11 +2600,6 @@ Utils.getResearchData = function() {
                 if(task.IncludesPokemon == false)
                     continue;
  
-                // 영어를 한국어로 반환
-                //var getTaskName = researchTaskLang[taskNameEn];
-                // if(typeof getTaskName === 'undefined'){
-                //     getTaskName = taskNameEn;
-                // }
 
                 if (task.Items.length > 0){
                     //var getRewardNameList = taskAndPokemonList[j].split('96x96/');
