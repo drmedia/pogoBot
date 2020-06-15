@@ -16,7 +16,7 @@ var currentTime = new Date(); var currentHour = currentTime.getHours(); var curr
 
 var isLocatTest = false;
 var roomNameForPrint = '강서';
-var raidheaderline =  '비리디온 레이드 제보 1727/2159';
+var raidheaderline =  '레시라무 레이드 제보 2307/2884';
 var researchTaskHeader =  '리서치 목록';
 var DoriDBRemoteData =  ["event", "community"];
 var useDoriDBRemote = true // DoriDBRemote 사용여부
@@ -1871,8 +1871,9 @@ function timeSet (dbName,raidContent){
                 // startMIN = 9;
             // }
         // }
-		
-        if (currentTime.getHours() > 10 && startHR < 10){
+        // 아침에 제보 순서 바뀌는 현상 수정(2020.06.15 유라솔)
+		var nowDateTime = new Date();
+        if (nowDateTime.getHours() > 10 && startHR < 10){
             startHR = startHR + 12;
         }
         // if (startMIN < 15){ //끝나는 시, 분 구하기
@@ -1956,8 +1957,11 @@ function raidRemainingConvert (msg){
             //이제 분 구함. 시를 구하자
             var timeNow = new Date();
             timeNow.setMinutes(timeNow.getMinutes()-(raidMinute-intMinute));
+            // 남음 시간 버그 수정(2020-6-15 유라솔)
+            var raidHour =  timeNow.getHours();
+            if(raidHour > 12 ) raidHour = raidHour - 12;
 
-            msgList[i] = timeNow.getHours() + '시 ' + timeNow.getMinutes() + '분';            
+            msgList[i] = raidHour + '시 ' + timeNow.getMinutes() + '분';            
 
             continue;
         }
