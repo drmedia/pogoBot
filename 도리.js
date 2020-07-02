@@ -19,7 +19,7 @@ var roomNameForPrint = '강서';
 var raidheaderline =  '레시라무 레이드 제보 2307/2884';
 var researchTaskHeader =  '리서치 목록';
 var DoriDBRemoteData =  ["event", "community"];
-var useDoriDBRemote = true // DoriDBRemote 사용여부
+var useDoriDBRemote = true; // DoriDBRemote 사용여부
 var useDustData = true; // 미세먼지 정보 사용여부
 var useWeathetInfo = true; // 날씨 정보 사용여부
 var usePogoWeathetInfo = true; // 포고날씨 정보 사용여부
@@ -29,49 +29,49 @@ var useIniPayRate = true; // 인니페이 정보 사용 여부
 var usePokemonInfo = true; // 포켓몬정보 사용 여부
 var useResearchData = true; // 리서치정보 사용 여부
 var useWordFollow = true; // 단어 따라하기 사용 여부
-var useDoriCall = true // 도리 호출 사용 여부      
-var useTypePokemon = true // 포켓몬 속성 정보 사용 여부
-var useRpsGame = true // 가위바위보 게임 사용 여부
-var useNestList = true // 둥지 목록 사용 여부
-var useEventInfo = true // 이벤트 정부 사용 여부
-var useCommunityInfo = true // 컴뮤니티 정보 사용 여부  
-var useWeatherBuffIngo = true // 날씨 버프 정보 사용 여부   
-var useRegionLockInfo = true // 지역한정 포켓몬 정보 사용 여부
-var useShinyInfo = true // 이로치 정보 사용 여부
-var useSinnohstoneInfo = true // 신오의돌 정보 사용 여부
-var useAppraiseInfo = true //평가 정보 사용 여부
-var useCpRankInfo = true // cpRank 정보 사용 여부
-var useRaidGuideInfo = true // raidGuide 정보 사용 여부
-var useItemInfo = true // item 정보 사용 여부
-var useExperienceInfo = true // experience 정보 사용 여부
-var useTypeDiffInfo = true // 포켓몬 상성표 사용 여부
-var useExGymsInfo = true // ExGym 정보 사용 여부
-var useStopLocation = true // 스탑정보 사용 여부
-var useGymLocation = true // 체육관 사용 여부
-var useRosterManual = true // rosterManual 사용 여부
-var useExPassShare = true // ExPassShare 사용 여부 
-var useSearchNaver = true // 네이버 서치 사용 여부
-var useSearchYoutube = true // 유튜브 서치 사용 여부
-var useSearchGoogle = true // 구글 서치 사용 여부
-var useWordChain = true // 끝말잇기 게임 사용 여부
-var useBugReport = true // 버그신고 사용 여부
-var usePatchNote = true // 패치노트 사용 여부
-var useDoriguide = true // 도리가이드 사용 여부
-var useNewbieGuide = true // 가입인사 사용 여부
-var useGibberish = true // 아무말 사용 여부
-var useVsResult = true // VS 게임 사용 여부
-var useDiceGame = true // 주사위 게임 사용 여부
-var useRandomIVGen = true // 랜덤 IVGen 사용 여부
-var useRandomLottery = true // 로또 사용 여부
-var useJabdam = true // 잡담 사용 여부
-var useGreet = true // 인사 사용 여부
-var usePretty = true // 이쁜짓 사용 여부
-var useFool = true // 바보 사용 여부
-var useHello = true // 안녕 사용 여부
-var useTodolist = true // 오늘할일 사용 여부
-var useRosterList = true // 출석부 팟 사용 여부
-var useRaidStatusList = true // 레이드 제보 사용 여부
-var useResearchList = true // 리서치 사용 여부
+var useDoriCall = true; // 도리 호출 사용 여부      
+var useTypePokemon = true; // 포켓몬 속성 정보 사용 여부
+var useRpsGame = true; // 가위바위보 게임 사용 여부
+var useNestList = true; // 둥지 목록 사용 여부
+var useEventInfo = true; // 이벤트 정부 사용 여부
+var useCommunityInfo = true; // 컴뮤니티 정보 사용 여부  
+var useWeatherBuffIngo = true; // 날씨 버프 정보 사용 여부   
+var useRegionLockInfo = true; // 지역한정 포켓몬 정보 사용 여부
+var useShinyInfo = true; // 이로치 정보 사용 여부
+var useSinnohstoneInfo = true; // 신오의돌 정보 사용 여부
+var useAppraiseInfo = true; //평가 정보 사용 여부
+var useCpRankInfo = true; // cpRank 정보 사용 여부
+var useRaidGuideInfo = true; // raidGuide 정보 사용 여부
+var useItemInfo = true; // item 정보 사용 여부
+var useExperienceInfo = true; // experience 정보 사용 여부
+var useTypeDiffInfo = true; // 포켓몬 상성표 사용 여부
+var useExGymsInfo = true; // ExGym 정보 사용 여부
+var useStopLocation = true; // 스탑정보 사용 여부
+var useGymLocation = true; // 체육관 사용 여부
+var useRosterManual = true; // rosterManual 사용 여부
+var useExPassShare = true; // ExPassShare 사용 여부 
+var useSearchNaver = true; // 네이버 서치 사용 여부
+var useSearchYoutube = true; // 유튜브 서치 사용 여부
+var useSearchGoogle = true; // 구글 서치 사용 여부
+var useWordChain = true; // 끝말잇기 게임 사용 여부
+var useBugReport = true; // 버그신고 사용 여부
+var usePatchNote = true; // 패치노트 사용 여부
+var useDoriguide = true; // 도리가이드 사용 여부
+var useNewbieGuide = true; // 가입인사 사용 여부
+var useGibberish = true; // 아무말 사용 여부
+var useVsResult = true; // VS 게임 사용 여부
+var useDiceGame = true; // 주사위 게임 사용 여부
+var useRandomIVGen = true; // 랜덤 IVGen 사용 여부
+var useRandomLottery = true; // 로또 사용 여부
+var useJabdam = true; // 잡담 사용 여부
+var useGreet = true; // 인사 사용 여부
+var usePretty = true; // 이쁜짓 사용 여부
+var useFool = true; // 바보 사용 여부
+var useHello = true; // 안녕 사용 여부
+var useTodolist = true; // 오늘할일 사용 여부
+var useRosterList = true; // 출석부 팟 사용 여부
+var useRaidStatusList = true; // 레이드 제보 사용 여부
+var useResearchList = true; // 리서치 사용 여부
 
 
 
@@ -215,18 +215,18 @@ function getPogoWeathetInfo(pos)
         var obj = JSON.parse(data);
 
         if(obj.length == 0) {
-            return ''
+            return '';
         }
 
         if(typeof obj[0] === 'undefined') {
-            return ''
+            return '';
         }
 
         var weatherData = obj[0];
 
         var AMForecasts = weatherData.AMForecasts;    
         var PMForecasts = weatherData.PMForecasts;
-        var result = ""
+        var result = "";
          for (var i = 0; i < AMForecasts.length; i++) {  
             result = result + "오전 " + AMForecasts[i].HourName.replace('AM', '시') + " : " + AMForecasts[i].PogoWeatherKoName + "\n";
          } 
@@ -266,7 +266,7 @@ Utils.getRaidBossData = function() { //보스목록을 불러오자
         var obj = JSON.parse(data);
 
         if(obj.length == 0) {
-            return ''
+            return '';
         }
         var bossList = '보스 목록';
         bossList = bossList + '\n' + getToday() + ' 현재 실프로드 기준' + '\n\n' 
@@ -365,22 +365,22 @@ Utils.getEggHatch = function() { //알 부화 정보를 불러오자
         var obj = JSON.parse(data);
 
         if(obj.length == 0) {
-            return ''
+            return '';
         }
 
         var hatchList = '알 부화 정보';
-        hatchList = hatchList + '\n' + getToday() + ' 현재 실프로드 기준' + '\n\n' 
+        hatchList = hatchList + '\n' + getToday() + ' 현재 실프로드 기준' + '\n\n';
 
         for (var i = 0; i< obj.length; i++){
            var distance =  obj[i];
-           hatchList = hatchList + distance.Remark + '\n'
+           hatchList = hatchList + distance.Remark + '\n';
            var eggs = distance.EggDistances
            for(var x =0; x< eggs.length; x++)
            {
                var egg = eggs[x];
                 hatchList = hatchList + "#" + egg.PokemonNo + " " + egg.NameKo +  ((egg.IsShiny  == true) ? "(*)" : "") + " 100CP:" + egg.Iv100 + '\n' ;
            }
-           hatchList = hatchList + '\n'
+           hatchList = hatchList + '\n';
         }
 
         return hatchList;
@@ -562,9 +562,9 @@ function sayItToHype (from, thisMessage){
 
 //txt를 읽거나, 그 안에 있는 문장을 읽는 함수
 function keyToText (textKey, dbName){
-    var dbToUse = DoriDB.readData(dbName);
+    
     if (textKey == null){
-        if(useDoriDBRemote && DoriDBRemoteData.includes(dbName))
+        if(useDoriDBRemote && (DoriDBRemoteData.indexOf(dbName) > -1))
         {
             return DoriDBRemoteService.readData(dbName);
         } 
@@ -575,6 +575,7 @@ function keyToText (textKey, dbName){
         
     } else {
         var keyNumber;
+        var dbToUse = DoriDB.readData(dbName);
         var divideCategory = dbToUse.split("\n"); //첫 줄 빼기용
         var keySelect = divideCategory[0].split(",");
         if (divideCategory[0].includes(textKey)){
@@ -1036,15 +1037,18 @@ function readThisRoster (rosterList){
         }
         
         var memoIs = rosterToUse[4];
-        
-        if (!memoIs.includes('TEMPTEMPTEMPTEMPTEMP')){
-            printable = printable + '\n--------------------\n' + memoIs;
-            if (accountCount > 10){
-                printable = printable + '\n' + accountCount + '계정';
+        if(typeof memoIs !== 'undefinded')
+        {
+            if (!memoIs.includes('TEMPTEMPTEMPTEMPTEMP')){
+                printable = printable + '\n--------------------\n' + memoIs;
+                if (accountCount > 10){
+                    printable = printable + '\n' + accountCount + '계정';
+                }
+            } else if (accountCount > 10){
+                printable = printable + '\n--------------------\n' + accountCount + '계정';
             }
-        } else if (accountCount > 10){
-            printable = printable + '\n--------------------\n' + accountCount + '계정';
         }
+
                 
         return printable;
     }
