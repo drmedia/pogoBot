@@ -3617,7 +3617,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         if(useVsResult){
             //VS 놀이
             if ((msg.toUpperCase()).includes("VS")){
-                msg.replace('VS','vs'); msg.replace('Vs','vs'); msg.replace('vS','vs');
+                
+                msg = msg.replace(/vs/i,'vs');
                 returnText = vsDetermineFUN('vsResult',msg);
                 msg = 'none';
             }
